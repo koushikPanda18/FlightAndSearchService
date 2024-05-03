@@ -20,19 +20,25 @@ class cityRepository{
                     id:cityid
                 }
             })
+            return true;
         }
         catch(err){
-            console.log("something happened in the repository layer");
+            console.log("something happened in the repository layer for deletion");
             throw(err);
         }
     }
     async updateCity(cityid,data){
         try{
-            const city=await City.update(data,{
-                where:{
-                    id:cityid
+            const city=await City.update(
+                {
+                    Name:data.name
+                },
+                {
+                    where:{
+                        id:cityid
+                    }
                 }
-            })
+            )
             return city;
         }
         catch(err){
