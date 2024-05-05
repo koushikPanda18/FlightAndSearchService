@@ -12,6 +12,12 @@ Another advantage of ORMs is they support multiple databases: Postgres, MySQL, S
 
 With an ORM, switching databases is done by the ORM itself, and typically all you need to do is change a value or two in a configuration file.
 
+# COMMAND FOR DATABAES CREATION-- npm sequelize db:create
+# COMMAND FOR TABLES CREATION--  npx sequelize model:generate --name (name of the table) --attributes (name:String,address:String)
+# COMMAND FOR MIGRATION TO SQL--- npx sequelize db:migrate
+
+
+
 
 
 
