@@ -11,3 +11,11 @@ Object Relational Mapping is a technique that maps software objects to database 
 Another advantage of ORMs is they support multiple databases: Postgres, MySQL, SQLite, etc. If you write an application using raw queries, it will be difficult to move to a different database because many of the queries will need to be re-written.
 
 With an ORM, switching databases is done by the ORM itself, and typically all you need to do is change a value or two in a configuration file.
+
+
+
+
+# TABLES--
+### City-> id,name,created_at,updated_at
+### Airport-> id,name,address,city_id,created_at,updated_at 
+      Relationship-> City has many airports and Airport belongs to a City

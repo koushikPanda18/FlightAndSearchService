@@ -91,7 +91,7 @@ const update=async (req,res)=>{
 }
 const getAll=async(req,res)=>{
     try{
-        const city=await cityservice.getAllCity();
+        const city=await cityservice.getAllCity(req.body);
         return res.status(201).json({
             data:city,
             success:true,
@@ -99,7 +99,7 @@ const getAll=async(req,res)=>{
             error:{}
         })
     }
-    catch{err}{
+    catch(err){
         return res.status(500).json({
             data:{},
             success:false,

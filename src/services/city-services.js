@@ -52,9 +52,9 @@ class cityServices{
             throw(err);
         }
     }
-    async getAllCity(){
+    async getAllCity(data){
         try{
-            const city=await cityrepository.getAllCity();
+            const city=await cityrepository.getAllCity(data);
             return city;
         }
         catch(err){
