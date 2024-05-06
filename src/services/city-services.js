@@ -54,7 +54,8 @@ class cityServices{
     }
     async getAllCity(data){
         try{
-            const city=await cityrepository.getAllCity(data);
+            const city=await cityrepository.getAllCity(data.name);
+       
             return city;
         }
         catch(err){
@@ -62,5 +63,26 @@ class cityServices{
             throw(err);
         }
     }
+    async getAirportInCity(data){
+        try{
+            const city=await cityrepository.getAirportsInCity(data);
+            return city;
+        }
+        catch(err){
+            console.log("something happened in service layer");
+            throw(err);
+        }
+    }
+    async createAllCity(data){
+        try{
+            const cities=await cityrepository.createAllCity(data);
+            return cities;
+        }
+        catch(err){
+            console.log("something happened in service layer");
+            throw(err);
+        }
+    }
+    
 }
 module.exports=cityServices;

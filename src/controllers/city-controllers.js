@@ -109,10 +109,51 @@ const getAll=async(req,res)=>{
     }
 }
 
+const getAirportInCity=async(req,res)=>{
+    try{
+        const city=await cityservice.getAirportInCity(req.body.name);
+        return res.status(201).json({
+            data:city,
+            success:true,
+            message:`Successfully fetched all airports in city ${req.body.name}`,
+            error:{}
+        })
+    }
+    catch(err){
+        return res.status(500).json({
+            data:{},
+            success:false,
+            message:`unable to fetch all airports in city ${req.body.name}`,
+            error:err
+        })
+    }
+}
+const createAll=async(req,res)=>{
+    try{
+        const city=await cityservice.createAllCity(req.body);
+        return res.status(201).json({
+            data:city,
+            success:true,
+            message:'Successfully created all cities',
+            error:{}
+        })
+    }
+    catch(err){
+        return res.status(500).json({
+            data:{},
+            success:false,
+            message:'unable to create all cities',
+            error:err
+        })
+    }
+}
+
 module.exports={
     create,
     destroy,
     get,
     update,
-    getAll
+    getAll,
+    getAirportInCity,
+    createAll
 }

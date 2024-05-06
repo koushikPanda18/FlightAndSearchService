@@ -1,4 +1,4 @@
-const {Op, where} =require('sequelize')
+const {Op  } =require('sequelize')
 const {City} = require("../models/index");
 
 class cityRepository{
@@ -63,11 +63,13 @@ class cityRepository{
     }
     async getAllCity(data){
         try{
-            console.log(data.name)
-            if(data.name){
+            //console.log(typeof(data))
+            if(data){
                 const city=await City.findAll({
                     where:{
-                        [Op.startsWith]:data.name,
+                        name: {
+                            [Op.startsWith]: data
+                        }
                     }
                 });
                 return city;
@@ -78,6 +80,32 @@ class cityRepository{
             }
         }
         catch(err){
+            console.log("something happened in the repository layer");
+            throw(err);
+        }
+    }
+    async getAirportsInCity(data){
+        try{
+            const city1=await City.findOne({where:{
+                name:data
+            }});
+    
+            //console.log(city1);
+            const res=await city1.getAirports();
+            return res;
+        }catch(err){
+            console.log("something happened in the repository layer");
+            throw(err);
+        }
+    }
+    async createAllCity(data){
+        try{
+            console.log(data);
+            const cities=await City.bulkCreate(data);
+            return cities;
+        }
+        catch(err){
+            console.log(err);
             console.log("something happened in the repository layer");
             throw(err);
         }

@@ -1,4 +1,8 @@
 const express=require('express');
+const sequelize=require('sequelize');
+const db=require('./models/index')
+const {City}=require('./models/index');
+const {Airport}=require('./models/index')
 //const cityRepository=require("./repository/city-repository");
 const apiRouter=require("./routes/index");
 
@@ -14,9 +18,12 @@ const appServer=async()=>{
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({extended:true}))
 
-    app.listen(PORT,()=>{
+    app.listen(PORT,async()=>{
         console.log("server statred at port",PORT);
         //console.log(process.env.PORT);
+       // db.sequelize.sync({alter:true});
+       
+
         app.use('/api',apiRouter);
     })
 }
